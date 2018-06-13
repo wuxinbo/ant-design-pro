@@ -6,8 +6,8 @@ export default webpackConfig => {
   const options = {
     antDir: path.join(__dirname, './node_modules/antd'),
     stylesDir: path.join(__dirname, './src/'),
-    varFile: path.join(__dirname, './node_modules/antd/lib/style/themes/default.less'),
-    mainLessFile: path.join(__dirname, './src/index.less'),
+    varFile: path.join(__dirname, './src/components/style/antd_themes.less'),
+    mainLessFile: path.join(__dirname, './src/main.less'),
     themeVariables: ['@primary-color'],
     indexFileName: 'index.html',
   };
