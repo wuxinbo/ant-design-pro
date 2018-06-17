@@ -75,10 +75,9 @@ export default class BaseMenu extends PureComponent {
   /**
    * get SubMenu or Item
    */
-  getSubMenuOrItem = (item, parent) => {
-    const id = parent ? `${parent}.${item.name}` : `menu.${item.name}`;
+  getSubMenuOrItem = item => {
     if (item.children && item.children.some(child => child.name)) {
-      const name = <FormattedMessage defaultMessage={item.name} id={id} />;
+      const name = <FormattedMessage defaultMessage={item.name} id={item.locale} />;
       return (
         <SubMenu
           title={
@@ -93,11 +92,11 @@ export default class BaseMenu extends PureComponent {
           }
           key={item.path}
         >
-          {this.getNavMenuItems(item.children, id)}
+          {this.getNavMenuItems(item.children)}
         </SubMenu>
       );
     } else {
-      return <Menu.Item key={item.path}>{this.getMenuItemPath(item, parent)}</Menu.Item>;
+      return <Menu.Item key={item.path}>{this.getMenuItemPath(item)}</Menu.Item>;
     }
   };
   /**
@@ -105,9 +104,8 @@ export default class BaseMenu extends PureComponent {
    * Judge whether it is http link.return a or Link
    * @memberof SiderMenu
    */
-  getMenuItemPath = (item, parent) => {
-    const id = parent ? `${parent}.${item.name}` : `menu.${item.name}`;
-    const name = <FormattedMessage defaultMessage={item.name} id={id} />;
+  getMenuItemPath = item => {
+    const name = <FormattedMessage defaultMessage={item.name} id={item.locale} />;
     const itemPath = this.conversionPath(item.path);
     const icon = getIcon(item.icon);
     const { target } = item;
