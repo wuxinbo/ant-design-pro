@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import { MiniArea } from '../Charts';
 import NumberInfo from '../NumberInfo';
 
@@ -33,18 +32,18 @@ export default class ActiveChart extends Component {
     clearTimeout(this.timer);
   }
   loopData = () => {
-    this.timer = setTimeout(() => {
-      this.setState(
-        {
-          activeData: getActiveData(),
-        },
-        () => {
-          requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      this.timer = setTimeout(() => {
+        this.setState(
+          {
+            activeData: getActiveData(),
+          },
+          () => {
             this.loopData();
-          });
-        }
-      );
-    }, 1000);
+          }
+        );
+      }, 1000);
+    });
   };
   render() {
     const { activeData = [] } = this.state;

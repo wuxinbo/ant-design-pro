@@ -32,6 +32,8 @@
     "enquire-js": "^0.2.1",
     "lodash": "^4.17.4",
     "lodash-decorators": "^5.0.1",
+    "lodash.isequal": "^4.5.0",
+    "memoize-one": "^3.1.1",
     "moment": "^2.22.0",
     "numeral": "^2.0.6",
     "omit.js": "^1.0.0",
